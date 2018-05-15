@@ -1,4 +1,5 @@
 module LinkedList
+  # Node class for linked_list
   class Node
     attr_accessor :value, :next_node
 

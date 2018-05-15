@@ -1,6 +1,6 @@
 module LinkedList
-  # include Enumerable
 
+  # LinkedList implementation
   class List
       attr_accessor :name
       attr_reader :size, :head, :tail
