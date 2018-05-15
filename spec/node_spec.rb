@@ -38,21 +38,4 @@ RSpec.describe Node do
 			expect(node.next_node).to eq(nil)
 		end
 	end
-
-	context "#prev_node" do
-		it "Assigns a new node to the previous node." do
-			node = Node.new(10)
-			node1 = Node.new(5)
-
-			node1.prev_node = node
-
-			expect(node1.prev_node).to eq(node)
-		end
-
-		it "Returns nil if no previous node found" do
-			node = Node.new(5)
-
-			expect(node.prev_node).to eq(nil)
-		end
-	end
 end

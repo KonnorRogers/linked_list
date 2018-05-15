@@ -19,7 +19,6 @@ module LinkedList
         @tail = node
         @size += 1
       else
-        # node.prev_node = @tail
         @tail.next_node = node
         @tail = node
         @size += 1
@@ -33,7 +32,6 @@ module LinkedList
         @tail = node
         @size += 1
       else
-        # @head.prev_node = head
         node.next_node = @head
         @head = node
         @size += 1
@@ -71,7 +69,6 @@ module LinkedList
       return nil if @head.nil?
 
       popped_node = @tail
-      # @tail = @tail.prev_node
       @tail.next_node = nil
       @size -= 1
 
@@ -122,9 +119,9 @@ module LinkedList
     def insert_at(value, index)
       return 'Improper input' unless value.is_a?(Node)
 
-      list.prepend(value) if @head.nil?
+      return list.prepend(value) if @head.nil?
 
-
+      until
     end
   end
 end
