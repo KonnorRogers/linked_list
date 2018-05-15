@@ -120,8 +120,6 @@ module LinkedList
       return 'Improper input' unless value.is_a?(Node)
 
       return list.prepend(value) if @head.nil?
-
-      until
     end
   end
 end

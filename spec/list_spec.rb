@@ -1,8 +1,8 @@
 require 'list'
 require 'node'
+include LinkedList
 
 RSpec.describe List do
-  include LinkedList
 
   context '#initialize' do
     it 'Creates a linked list w/ no arguments given' do
