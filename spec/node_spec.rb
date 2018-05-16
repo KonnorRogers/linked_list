@@ -2,7 +2,6 @@ require 'node'
 include LinkedList
 
 RSpec.describe Node do
-
   context '#initialize' do
     it 'Creates a new node if valid input given.' do
       expect(Node.new(0).value).to eq 0

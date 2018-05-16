@@ -3,7 +3,6 @@ require 'node'
 include LinkedList
 
 RSpec.describe List do
-
   context '#initialize' do
     it 'Creates a linked list w/ no arguments given' do
       expect(List.new).to be_an_instance_of(List)
@@ -148,6 +147,20 @@ RSpec.describe List do
       expect(ary_of_nodes.size).to eq(4)
       expect(ary_of_nodes[1]).to eq(node03)
       expect(ary_of_nodes[0]).to eq(node04)
+    end
+
+    it 'expects index to equal 1 on the 2nd item' do
+      list = List.new
+
+      list.prepend(Node.new(2))
+      list.prepend(Node.new(5))
+
+      ary_of_indexes = []
+
+      list.iterate { |_node, index| ary_of_indexes << index }
+
+      expect(ary_of_indexes[0]).to eq(0)
+      expect(ary_of_indexes[1]).to eq(1)
     end
   end
 
