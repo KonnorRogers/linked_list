@@ -116,6 +116,10 @@ module LinkedList
     def insert_at(value, index)
       return 'Improper input' unless value.is_a?(Node)
       return list.prepend(value) if @head.nil?
+
+      self.iterate do |node, node_index|
+        # FIX THIS!!s
+      end
     end
   end
 end
