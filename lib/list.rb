@@ -115,10 +115,15 @@ module LinkedList
 
     def insert_at(value, index)
       return 'Improper input' unless value.is_a?(Node)
-      return list.prepend(value) if @head.nil?
+      return prepend(value) if index.zero?
 
-      self.iterate do |node, node_index|
-        # FIX THIS!!s
+      iterate do |node, node_index|
+        if node_index == index - 1
+          value.next_node = node.next_node
+          node.next_node = value
+          @size += 1
+          return
+        end
       end
     end
   end

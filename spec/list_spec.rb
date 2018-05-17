@@ -288,4 +288,56 @@ RSpec.describe List do
       expect(list.to_s).to eq('nil')
     end
   end
+  context "#insert_at(value, index)" do
+    it "Returns Improper input if the value is not a node" do
+      list = List.new
+      expect(list.insert_at(5, 2)).to eq('Improper input')
+    end
+
+    it "Inserts the value at the head if value == 0 && head == nil" do
+      list = List.new
+      node01 = Node.new(5)
+
+      list.insert_at(node01, 0)
+      expect(list.at(0)).to eq(node01)
+    end
+
+    it "Will insert the value at the index and the linked_list will continue" do
+      list = List.new
+
+      list.prepend(Node.new(1))
+      list.append(Node.new(2))
+
+      list.insert_at(Node.new(3), 1)
+
+      expect(list.at(1).value).to eq(3)
+      expect(list.at(2).value).to eq(2)
+      expect(list.at(0).value).to eq(1)
+    end
+
+    it "Updates the size of the list" do
+      list = List.new
+
+      list.prepend(Node.new(1))
+      list.insert_at(Node.new(0), 0)
+      expect(list.size).to eq(2)
+    end
+
+    it "Properly inserts if inserted @ 0" do
+      list = List.new
+
+      list.prepend(Node.new(0))
+      list.insert_at(Node.new(1), 0)
+      expect(list.at(0).value).to eq(1)
+    end
+
+    it "Inserts properly @ 1" do
+      list = List.new
+
+      list.prepend(Node.new(0))
+      list.insert_at(Node.new(1), 1)
+
+      expect(list.at(1).value).to eq(1)
+    end
+  end
 end
