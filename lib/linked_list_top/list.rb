@@ -1,4 +1,8 @@
+<<<<<<< HEAD:lib/linked_list_top/list.rb
 module LinkedListTOP
+=======
+module LinkedList
+>>>>>>> 801c3d9d4d8a33b7031e5780ed3f27fe86e603a8:lib/list.rb
   # LinkedList implementation
   class List
     attr_accessor :name

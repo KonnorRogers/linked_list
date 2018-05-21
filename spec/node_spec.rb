@@ -10,7 +10,6 @@ module LinkedListTOP
       it 'Will not create a node if no input given' do
         expect { Node.new }.to raise_error(ArgumentError)
       end
-    end
 
     context '#value' do
       it 'Assigns a value if input given.' do
