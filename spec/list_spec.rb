@@ -21,20 +21,12 @@ module LinkedListTOP
       end
     end
 
-<<<<<<< HEAD
     node1 = Node.new(5)
     node2 = Node.new(12)
 
     context '#append' do
       it 'Adds a value onto the end of the list' do
         list = List.new
-=======
-RSpec.describe List do
-  context '#initialize' do
-    it 'Creates a linked list w/ no arguments given' do
-      expect(List.new).to be_an_instance_of(List)
-    end
->>>>>>> 801c3d9d4d8a33b7031e5780ed3f27fe86e603a8
 
         list.append(node1)
         list.append(node2)
@@ -171,24 +163,6 @@ RSpec.describe List do
         expect(ary_of_indexes[1]).to eq(1)
       end
     end
-<<<<<<< HEAD
-=======
-
-    it 'expects index to equal 1 on the 2nd item' do
-      list = List.new
-
-      list.prepend(Node.new(2))
-      list.prepend(Node.new(5))
-
-      ary_of_indexes = []
-
-      list.iterate { |_node, index| ary_of_indexes << index }
-
-      expect(ary_of_indexes[0]).to eq(0)
-      expect(ary_of_indexes[1]).to eq(1)
-    end
-  end
->>>>>>> 801c3d9d4d8a33b7031e5780ed3f27fe86e603a8
 
     context '#pop' do
       it 'returns the popped node' do
@@ -353,13 +327,13 @@ RSpec.describe List do
       expect(list.at(1).value).to eq(1)
     end
   end
-  context "#insert_at(value, index)" do
-    it "Returns Improper input if the value is not a node" do
+  context '#insert_at(value, index)' do
+    it 'Returns Improper input if the value is not a node' do
       list = List.new
       expect(list.insert_at(5, 2)).to eq('Improper input')
     end
 
-    it "Inserts the value at the head if value == 0 && head == nil" do
+    it 'Inserts the value at the head if value == 0 && head == nil' do
       list = List.new
       node01 = Node.new(5)
 
@@ -367,7 +341,7 @@ RSpec.describe List do
       expect(list.at(0)).to eq(node01)
     end
 
-    it "Will insert the value at the index and the linked_list will continue" do
+    it 'Will insert the value at the index and the linked_list will continue' do
       list = List.new
 
       list.prepend(Node.new(1))
@@ -380,7 +354,7 @@ RSpec.describe List do
       expect(list.at(0).value).to eq(1)
     end
 
-    it "Updates the size of the list" do
+    it 'Updates the size of the list' do
       list = List.new
 
       list.prepend(Node.new(1))
@@ -388,7 +362,7 @@ RSpec.describe List do
       expect(list.size).to eq(2)
     end
 
-    it "Properly inserts if inserted @ 0" do
+    it 'Properly inserts if inserted @ 0' do
       list = List.new
 
       list.prepend(Node.new(0))
@@ -396,7 +370,7 @@ RSpec.describe List do
       expect(list.at(0).value).to eq(1)
     end
 
-    it "Inserts properly @ 1" do
+    it 'Inserts properly @ 1' do
       list = List.new
 
       list.prepend(Node.new(0))
