@@ -1,3 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rspec', '~> 3.0'
+git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
+
+# Specify your gem's dependencies in linked_list_top.gemspec
+gemspec

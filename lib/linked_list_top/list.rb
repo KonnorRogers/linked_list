@@ -1,9 +1,8 @@
-module LinkedList
-
+module LinkedListTOP
   # LinkedList implementation
   class List
-      attr_accessor :name
-      attr_reader :size, :head, :tail
+    attr_accessor :name
+    attr_reader :size, :head, :tail
 
     # Creates the linkedlist via List.new
     def initialize
@@ -14,28 +13,26 @@ module LinkedList
 
     # Adds a node onto the end of the list
     def append(node)
-      if @tail.nil? # Checks if the list is empty
+      if @head.nil? # Checks if the list is empty
         @head = node
-        @tail = node
-        @size += 1
       else
         @tail.next_node = node
-        @tail = node
-        @size += 1
       end
+
+      @tail = node
+      @size += 1
     end
 
     # Adds a node onto the front of the list
     def prepend(node)
       if head.nil? # Checks if the list is empty
-        @head = node
         @tail = node
-        @size += 1
       else
         node.next_node = @head
-        @head = node
-        @size += 1
       end
+
+      @head = node
+      @size += 1
     end
 
     # Finds a node specificed at a specific index
@@ -58,9 +55,11 @@ module LinkedList
       return nil if @head.nil?
 
       node = @head
+      index = 0
       until node.nil?
-        yield node
+        yield node, index
         node = node.next_node
+        index += 1
       end
     end
 
@@ -72,7 +71,7 @@ module LinkedList
       @tail.next_node = nil
       @size -= 1
 
-      return popped_node
+      popped_node
     end
 
     # Searches for the value entered to see if its in a node in the list
@@ -81,9 +80,7 @@ module LinkedList
 
       node = @head
       # node.nil? must come first due to it being evaluated before node.value
-      until node.nil? || node.value == value
-        node = node.next_node
-      end
+      node = node.next_node until node.nil? || node.value == value
 
       return false if node.nil?
 
@@ -107,9 +104,9 @@ module LinkedList
 
     # Returns a string for printing to console
     def to_s
-      string = ""
+      string = ''
 
-      self.iterate do |node|
+      iterate do |node|
         string += "( #{node.value} ) -> " unless node.value.nil?
       end
 
@@ -118,8 +115,16 @@ module LinkedList
 
     def insert_at(value, index)
       return 'Improper input' unless value.is_a?(Node)
+      return prepend(value) if index.zero?
 
-      return list.prepend(value) if @head.nil?
+      iterate do |node, node_index|
+        if node_index == index - 1
+          value.next_node = node.next_node
+          node.next_node = value
+          @size += 1
+          return
+        end
+      end
     end
   end
 end
