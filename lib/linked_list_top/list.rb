@@ -43,10 +43,10 @@ module LinkedListTOP
       node_index = 0
       node = @head
       until node_index == index
+        return nil if node.next_node.nil?
         node = node.next_node
         node_index += 1
       end
-
       node
     end
 
@@ -126,20 +126,37 @@ module LinkedListTOP
         end
       end
     end
-    
+
     def remove_at(index)
+      # handles 0 values or index range too high
       return 'Index out of bounds' if index < 0 || index > @size - 1
-      
+
+      # handles 1 value
       if @size == 1
         @head = nil
+        @tail = nil
         @size -= 1
         return
       end
-      
-        
-      # return at(index - 1).next_node = nil if @size == 1
-      
-      at(index - 1).next_node = at(index + 1)
+
+      # handles 0 index
+      if index == 0
+        @head = @head.next_node
+        @size -= 1
+        return
+      end
+
+      # handles last place in the list
+      if index == @size - 1
+        @tail = at(index - 1)
+        @tail.next_node = nil
+        @size -= 1
+        return
+      end
+
+      at(index - 1).next_node = at(index).next_node
+
+      @size -= 1
     end
   end
 end

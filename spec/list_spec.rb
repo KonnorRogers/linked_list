@@ -379,48 +379,87 @@ module LinkedListTOP
       expect(list.at(1).value).to eq(1)
     end
   end
-  
+
   context "#remove_at(index)" do
     it "Returns index out of bounds if < 0" do
       list = List.new
-      
+
       expect(list.remove_at(-1)).to eq('Index out of bounds')
     end
-    
+
     it "Returns index out of bounds if index > @size - 1" do
       list = List.new
-      
+      list.prepend(Node.new(5))
+
       expect(list.remove_at(1)).to eq('Index out of bounds')
     end
-    
+
     it "sets head to nil if only 1 value in the list" do
       list = List.new
-      
+
       list.prepend(Node.new(5))
       list.remove_at(0)
-      
+
       expect(list.head).to eq(nil)
+      expect(list.tail).to eq(nil)
     end
-    
-    it "Adjusts size to 0" do
+
+    it "Removes item at the start" do
       list = List.new
-      
-      list.prepend(Node.new(5))
+
+      node01 = Node.new(1)
+      node02 = Node.new(2)
+
+      list.prepend(node01)
+      list.prepend(node02)
+
       list.remove_at(0)
-      
-      expect(list.size).to eq(0)
+
+      expect(list.at(0)).to eq(node01)
     end
-    
-    it "Adjusts the list accordingly" do
+
+    it "Removes item in middle" do
       list = List.new
-      
-      list.prepend(Node.new(0))
-      list.prepend(Node.new(1))
-      list.prepend(Node.new(2))
-      
+
+      node01 = Node.new(1)
+      node02 = Node.new(2)
+      node03 = Node.new(3)
+
+      list.prepend(node01)
+      list.prepend(node02)
+      list.prepend(node03)
+
+      list.remove_at(1)
+
+      expect(list.at(0)).to eq(node03)
+      expect(list.at(1)).to eq(node01)
+    end
+    it "Removes item at end" do
+      list = List.new
+
+      node01 = Node.new(1)
+      node02 = Node.new(2)
+
+      list.prepend(node01)
+      list.prepend(node02)
+
+      list.remove_at(1)
+
+      expect(list.at(0)).to eq(node02)
+    end
+
+    it "Updates size accordingly" do
+      list = List.new
+
+      node01 = Node.new(1)
+      node02 = Node.new(2)
+
+      list.prepend(node01)
+      list.prepend(node02)
+
       list.remove_at(0)
-      
-      expect(list.at(0).value).to eq(1)
+
+      expect(list.size).to eq(1)
     end
   end
 end
