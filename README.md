@@ -22,7 +22,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Simple singly linked list data structure created as part of TOP.
+Access the module via LinkedListTOP::List.new
+This will create the structure to which you add nodes.
+
+IE:
+    list = LinkedListTOP::List.new
+    node01 = LinkedListTOP::Node.new('value1')
+    node02 = LinkedListTOP::Node.new('value2')
+
+    list.append(node01)
+    list.append(node02)
+
+
 
 ## Development
 
@@ -40,4 +52,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the LinkedListTop project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/linked_list_top/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the LinkedListTop project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/paramagicdev/linked_list_top/blob/master/CODE_OF_CONDUCT.md).
