@@ -149,7 +149,7 @@ module LinkedListTOP
         expect(ary_of_nodes[0]).to eq(node04)
       end
 
-      it 'expects index to equal 1 on the 2nd item' do
+      it 'expects 2nd item to equal 2' do
         list = List.new
 
         list.prepend(Node.new(2))
@@ -377,6 +377,50 @@ module LinkedListTOP
       list.insert_at(Node.new(1), 1)
 
       expect(list.at(1).value).to eq(1)
+    end
+  end
+  
+  context "#remove_at(index)" do
+    it "Returns index out of bounds if < 0" do
+      list = List.new
+      
+      expect(list.remove_at(-1)).to eq('Index out of bounds')
+    end
+    
+    it "Returns index out of bounds if index > @size - 1" do
+      list = List.new
+      
+      expect(list.remove_at(1)).to eq('Index out of bounds')
+    end
+    
+    it "sets head to nil if only 1 value in the list" do
+      list = List.new
+      
+      list.prepend(Node.new(5))
+      list.remove_at(0)
+      
+      expect(list.head).to eq(nil)
+    end
+    
+    it "Adjusts size to 0" do
+      list = List.new
+      
+      list.prepend(Node.new(5))
+      list.remove_at(0)
+      
+      expect(list.size).to eq(0)
+    end
+    
+    it "Adjusts the list accordingly" do
+      list = List.new
+      
+      list.prepend(Node.new(0))
+      list.prepend(Node.new(1))
+      list.prepend(Node.new(2))
+      
+      list.remove_at(0)
+      
+      expect(list.at(0).value).to eq(1)
     end
   end
 end

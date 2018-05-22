@@ -126,5 +126,20 @@ module LinkedListTOP
         end
       end
     end
+    
+    def remove_at(index)
+      return 'Index out of bounds' if index < 0 || index > @size - 1
+      
+      if @size == 1
+        @head = nil
+        @size -= 1
+        return
+      end
+      
+        
+      # return at(index - 1).next_node = nil if @size == 1
+      
+      at(index - 1).next_node = at(index + 1)
+    end
   end
 end
