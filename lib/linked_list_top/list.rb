@@ -139,7 +139,6 @@ module LinkedListTOP
         return
       end
 
-
       # handles 0 index
       if index.zero?
         @head = @head.next_node

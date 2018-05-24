@@ -380,21 +380,21 @@ module LinkedListTOP
     end
   end
 
-  context "#remove_at(index)" do
-    it "Returns index out of bounds if < 0" do
+  context '#remove_at(index)' do
+    it 'Returns index out of bounds if < 0' do
       list = List.new
 
       expect(list.remove_at(-1)).to eq('Index out of bounds')
     end
 
-    it "Returns index out of bounds if index > @size - 1" do
+    it 'Returns index out of bounds if index > @size - 1' do
       list = List.new
       list.prepend(Node.new(5))
 
       expect(list.remove_at(1)).to eq('Index out of bounds')
     end
 
-    it "sets head to nil if only 1 value in the list" do
+    it 'sets head to nil if only 1 value in the list' do
       list = List.new
 
       list.prepend(Node.new(5))
@@ -404,7 +404,7 @@ module LinkedListTOP
       expect(list.tail).to eq(nil)
     end
 
-    it "Removes item at the start" do
+    it 'Removes item at the start' do
       list = List.new
 
       node01 = Node.new(1)
@@ -418,7 +418,7 @@ module LinkedListTOP
       expect(list.at(0)).to eq(node01)
     end
 
-    it "Removes item in middle" do
+    it 'Removes item in middle' do
       list = List.new
 
       node01 = Node.new(1)
@@ -434,7 +434,7 @@ module LinkedListTOP
       expect(list.at(0)).to eq(node03)
       expect(list.at(1)).to eq(node01)
     end
-    it "Removes item at end" do
+    it 'Removes item at end' do
       list = List.new
 
       node01 = Node.new(1)
@@ -446,9 +446,10 @@ module LinkedListTOP
       list.remove_at(1)
 
       expect(list.at(0)).to eq(node02)
+      expect(list.at(1)).to eq('Index out of bounds')
     end
 
-    it "Updates size accordingly" do
+    it 'Updates size accordingly' do
       list = List.new
 
       node01 = Node.new(1)
