@@ -139,17 +139,10 @@ module LinkedListTOP
         return
       end
 
-      # handles 0 index
-      if index == 0
-        @head = @head.next_node
-        @size -= 1
-        return
-      end
 
-      # handles last place in the list
-      if index == @size - 1
-        @tail = at(index - 1)
-        @tail.next_node = nil
+      # handles 0 index
+      if index.zero?
+        @head = @head.next_node
         @size -= 1
         return
       end
